@@ -13,6 +13,7 @@ public class SpikeChip {
         System.out.println("What kind of creature is your target?");
         String creature = scn.nextLine();
 
+
         switch(creature.toLowerCase()){
 
             case "vampire":
@@ -32,6 +33,17 @@ public class SpikeChip {
                 System.out.println("Better do more research before we attack");
         }
     }
+
+    private void createHuman() {
+    }
+
+    private void createDemon() {
+    }
+
+    private void createVampire() {
+    }
+
+
     //get input as to what you want to kill
     //is it human?
     //if human than zaaaaaap
