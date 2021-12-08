@@ -21,7 +21,7 @@ public class CalculatorView {
         //double allows for a decimal point answer - needed for potential divide functions
 
         Scanner scn = new Scanner(System.in);
-        String answer;
+        Scanner newScanner = new Scanner(System.in);
 
         System.out.println("Which operation would you like to perform?");
         System.out.println("You are currently able to use: +, -, * or /");
@@ -34,37 +34,37 @@ public class CalculatorView {
         num2 = scn.nextDouble();
 
         switch (operator) {
-            case '+':
+            case '+' -> {
                 result = num1 + num2;
                 System.out.println("Your answer to " + num1 + " + " + num2 + " = " + result);
-                break;
-            case '-':
+            }
+            case '-' -> {
                 result = num1 - num2;
                 System.out.println("Your answer to " + num1 + " - " + num2 + " = " + result);
-                break;
-
-            case '*':
+            }
+            case '*' -> {
                 result = num1 * num2;
                 System.out.println("Your answer to " + num1 + " * " + num2 + " = " + result);
-                break;
-
-            case '/':
+            }
+            case '/' -> {
                 result = num1 / num2;
                 System.out.println("Your answer to " + num1 + " / " + num2 + " = " + result);
-                break;
-
-
-        }
-        do {
-            System.out.println("Would you like to do another calculation? Y/N");
-            answer = scn.nextLine();
-
-            if (answer.equalsIgnoreCase("y")) {
-                printMenu();
-            } else if (answer.equalsIgnoreCase("n")) {
-                System.exit(0);
             }
+        }
+        System.out.println("What would you like to do now?");
+        System.out.println("1 - Another Calculation");
+        System.out.println("2 - Exit");
+
+        int answer = Integer.parseInt(newScanner.nextLine());
+
+        if (answer == 1) {
+            printMenu();
+        }
+        else if (answer == 2) {
+            System.out.println("Bye");
         }
     }
 }
+
+
 
