@@ -50,6 +50,7 @@ public class CalculatorView {
                 result = num1 / num2;
                 System.out.println("Your answer to " + num1 + " / " + num2 + " = " + result);
             }
+
         }
         System.out.println("What would you like to do now?");
         System.out.println("1 - Another Calculation");
