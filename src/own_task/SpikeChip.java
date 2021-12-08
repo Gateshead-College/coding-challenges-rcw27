@@ -9,23 +9,31 @@ public class SpikeChip {
         SpikeChip sc = new SpikeChip();
         sc.identifyTarget();
     }
+
+    //get input as to what you want to kill
     private void identifyTarget() {
+        System.out.println("This is the initiative chip inside your head");
         System.out.println("What kind of creature is your target?");
         String creature = scn.nextLine();
 
-
+        //is it human?
         switch(creature.toLowerCase()){
 
             case "vampire":
-                createVampire();
+                System.out.println("Oh yeah, you can definitely attack a vampire");
+                System.out.println("Stake in the heart works a treat!");
                 break;
 
             case "demon":
-                createDemon();
+                System.out.println("Oh yeah, you can definitely attack a demon");
+                System.out.println("What's going to be the best way to get this one though...");
+                System.out.println("Meh...just start hitting it hard...you'll work it out");
                 break;
 
+
             case "human":
-                createHuman();
+                System.out.println("ZAAAAAAAAAAAAAAAAAAAAPPP!!");
+                System.out.println("Come on! You know you can't hurt a human");
                 break;
 
             default:
@@ -34,19 +42,12 @@ public class SpikeChip {
         }
     }
 
-    private void createHuman() {
-    }
-
-    private void createDemon() {
-    }
-
-    private void createVampire() {
-    }
 
 
-    //get input as to what you want to kill
-    //is it human?
-    //if human than zaaaaaap
-    //if not human then allow
-    //
+
+
+
+
+
+
 }
