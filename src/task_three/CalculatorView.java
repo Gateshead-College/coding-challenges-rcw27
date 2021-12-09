@@ -1,7 +1,5 @@
 package task_three;
 
-import task_two.MainMenu;
-
 import java.util.Scanner;
 
 public class CalculatorView {
@@ -20,7 +18,7 @@ public class CalculatorView {
     Scanner newScanner = new Scanner(System.in);
 
 
-    char operator;
+    String operator;
     double num1, num2, result, num3, newResult;
 
 
@@ -33,9 +31,13 @@ public class CalculatorView {
     private void getOperator() {
 
         System.out.println("Which operation would you like to perform?");
-        System.out.println("You are currently able to use: +, -, * or /");
-        operator = scn.next().charAt(0);
-
+        System.out.println("You are currently able to use: + , - , * , / , pow (power of), sq (Square), sqrt (square root), rec (reciprocal)");
+        operator = scn.nextLine();
+        if (!requiresSecond()) {
+            getSecondNumber();
+        } else {
+            getFirstNumber();
+        }
     }
 
     private void getFirstNumber() {
@@ -43,15 +45,22 @@ public class CalculatorView {
         num1 = scn.nextDouble();
     }
 
-    private  void getSecondNumber() {
-        System.out.println("And what is the second number you would you to input?");
+    private void getSecondNumber() {
+        System.out.println(num1 + " " + operator);
         num2 = scn.nextDouble();
     }
 
-    private void getResult(){
+    getResult();
 
+
+    private void getResult() {
+        if (requiresSecond()) {
+            System.out.println(num1 + " " + operator + " " + num2);
+        } else {
+            System.out.println(operator + " of " + num2);
+        }
         switch (operator) {
-            case '+' -> {
+            case "+":
                 result = num1 + num2;
                 System.out.println();
                 System.out.println(ANSI_PURPLE + "Your answer to " + num1 + " + " + num2 + " = " + result + ANSI_RESET);
@@ -59,9 +68,10 @@ public class CalculatorView {
                 System.out.println();
                 System.out.println();
                 System.out.println();
-            }
+                break;
 
-            case '-' -> {
+
+            case "-":
                 result = num1 - num2;
                 System.out.println();
                 System.out.println(ANSI_PURPLE + "Your answer to " + num1 + " - " + num2 + " = " + result + ANSI_RESET);
@@ -69,9 +79,10 @@ public class CalculatorView {
                 System.out.println();
                 System.out.println();
                 System.out.println();
-            }
+                break;
 
-            case '*' -> {
+
+            case "*":
                 result = num1 * num2;
                 System.out.println();
                 System.out.println(ANSI_PURPLE + "Your answer to " + num1 + " * " + num2 + " = " + result + ANSI_RESET);
@@ -79,9 +90,10 @@ public class CalculatorView {
                 System.out.println();
                 System.out.println();
                 System.out.println();
+                break;
 
-            }
-            case '/' -> {
+
+            case "/":
                 result = num1 / num2;
                 System.out.println();
                 System.out.println(ANSI_PURPLE + "Your answer to " + num1 + " / " + num2 + " = " + result + ANSI_RESET);
@@ -89,8 +101,49 @@ public class CalculatorView {
                 System.out.println();
                 System.out.println();
                 System.out.println();
+                break;
 
-            }
+            case "pow":
+                result = Math.pow(num1, num2);
+                System.out.println();
+                System.out.println(ANSI_PURPLE + "Your answer to " + num1 + " to the power of " + num2 + " = " + result + ANSI_RESET);
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                break;
+
+            case "sqrt":
+                result = Math.sqrt(num2);
+                System.out.println();
+                System.out.println(ANSI_PURPLE + "Your answer to the square root of " + num2 + " = " + result + ANSI_RESET);
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                break;
+
+            case "sq":
+                result = (num2 * num2);
+                System.out.println();
+                System.out.println(ANSI_PURPLE + "Your answer to " + num2 + " squared = " + result + ANSI_RESET);
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                break;
+
+            case "rec":
+                result = 1 / num2;
+                System.out.println();
+                System.out.println(ANSI_PURPLE + "Your answer to the reciprocal of " + num2 + " = " + result + ANSI_RESET);
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                break;
+
+
         }
 
 
@@ -106,6 +159,16 @@ public class CalculatorView {
         } else if (answer == 2) {
             System.out.println("Bye");
         }
+    }
+
+    private boolean requiresSecond() {
+        switch (operator) {
+            case "sqrt":
+            case "sq":
+            case "rec":
+                return false;
+        }
+        return true;
 
     }
 }
